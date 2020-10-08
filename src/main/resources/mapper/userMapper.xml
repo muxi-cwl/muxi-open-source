@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ultral.tx.api.dao.UserDao">
+    <!-- 只有select标记才有resultType属性。
+    resultType指定ResultSet记录封装成什么实体类型 -->
+    <select id="queryAllUser" resultType="question">
+		select * from dev_question
+	</select>
+
+    <insert id="save" parameterType="question">
+        <selectKey keyProperty="questionId" order="AFTER"
+                   resultType="java.lang.Long">
+            select LAST_INSERT_ID()
+        </selectKey>
+        insert into dev_question (title,content) values #{title},#{content}
+    </insert>
+
+</mapper>

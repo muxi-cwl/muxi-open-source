@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <typeAliases>
+        <typeAlias type="com.ultral.tx.api.entity.DevQuestionDO" alias="question"/>
+    </typeAliases>
+
+    <environments default="environment">
+        <environment id="environment">
+            <transactionManager type="JDBC" />
+            <dataSource type="POOLED">
+                <property name="driver"
+                          value="com.mysql.jdbc.Driver" />
+                <property name="url"
+                          value="jdbc:mysql://123.57.6.69:3306/ECS_TEST?useUnicode=true"/>
+                <property name="username" value="root" />
+                <property name="password" value="cwl@qwert@0826" />
+            </dataSource>
+        </environment>
+    </environments>
+    <!-- 指定加载的SQL定义文件 -->
+    <mappers>
+        <!--<mapper resource="cn/xdl/sql/DeptMapper.xml"  基于文件的方式实现/>-->
+        <mapper resource="mapper/questionMapper.xml" />
+        <!-- mapper的第二种实现方式 基于注解的方式实现-->
+        <mapper class="com.ultral.tx.api.dao.DevQuestionDao"/>
+    </mappers>
+</configuration>
